@@ -7,6 +7,7 @@ export const getFlights = createAsyncThunk("flight/getFlight", async () => {
     bl_lng: "24.65734",
     tr_lat: "43.423091",
     tr_lng: "46.118554",
+    speed: "1.99999",
   };
 
   const res = await api.get("/flights/list-in-boundary", { params });
