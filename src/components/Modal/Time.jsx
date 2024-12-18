@@ -1,7 +1,30 @@
-import React from "react";
+import t from "../../utils/fotmatDate";
+import c from "../../utils/nullCheck";
 
-const Time = () => {
-  return <div>Time</div>;
+const Time = ({ data }) => {
+  return (
+    <div className="time">
+      <div>
+        <span>SCHEDULED</span>
+        <span>{c(t(data.scheduled?.departure))}</span>
+      </div>
+
+      <div>
+        <span>SCHEDULED</span>
+        <span>{c(t(data.scheduled?.arrival))}</span>
+      </div>
+
+      <div>
+        <span>ACTUAL</span>
+        <span>{c(t(data.real?.departure))}</span>
+      </div>
+
+      <div>
+        <span>ESTIMATED</span>
+        <span>{c(t(data.estimated?.arrival))}</span>
+      </div>
+    </div>
+  );
 };
 
 export default Time;
