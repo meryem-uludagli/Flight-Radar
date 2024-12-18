@@ -116,17 +116,10 @@ span {
     margin-top: 60px;
     overflow-y: auto;
 
-    .close-wrapper {
-      background: #535bf2;
-      display: flex;
-      justify-content: end;
-      border-radius: 8px;
-
-      button {
-        background: none;
-        font-size: 17px;
-        transition: all 0.4s;
-      }
+    button {
+      background: none;
+      font-size: 17px;
+      transition: all 0.4s;
     }
   }
 }
@@ -157,4 +150,39 @@ span {
       }
     }
   }
+}
+
+.close-wrapper {
+  background: #535bf2;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 8px;
+  padding: 0 5px;
+
+  div {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+
+    h3 {
+      margin: 0;
+      font-size: 10px;
+    }
+  }
+  span {
+    background: rgba(148, 147, 147, 0.7);
+    font-size: 13px;
+    padding: 3px 6px;
+    border-radius: 6px;
+  }
+
+  button {
+    background: none;
+    font-size: 17px;
+    transition: all 0.4s;
+  }
+}
+.details {
+  margin-top: 10px;
 }
