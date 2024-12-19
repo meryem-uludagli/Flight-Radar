@@ -1,20 +1,29 @@
-import React from "react";
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import {
+  MapContainer,
+  Marker,
+  Polyline,
+  Popup,
+  TileLayer,
+} from "react-leaflet";
 import "leaflet/dist/leaflet.css";
-import { useSelector } from "react-redux";
-import "leaflet-rotatedmarker";
+import { useDispatch, useSelector } from "react-redux";
 import { icon } from "leaflet";
+import "leaflet-rotatedmarker";
+import { clearRoute } from "../redux/slices/detailSlice";
 
 const Map = ({ setDetailId }) => {
   const { flights } = useSelector((store) => store.flight);
+  const { route } = useSelector((store) => store.detail);
+  const dispatch = useDispatch();
   const planeIcon = icon({
     iconUrl: "fly.png",
-    iconSize: [20, 20],
+    iconSize: [30, 30],
   });
+
   return (
     <MapContainer
       center={[38.922892, 35.411169]}
-      zoom={5}
+      zoom={6}
       scrollWheelZoom={true}
     >
       <TileLayer
@@ -31,12 +40,19 @@ const Map = ({ setDetailId }) => {
         >
           <Popup>
             <div className="popup">
-              <span>Kod:{flight.code}</span>
+              <span>Code: {flight.code}</span>
               <button onClick={() => setDetailId(flight.id)}>Detail</button>
+              {route.lenght > 1 && (
+                <button onClick={() => dispatch(clearRoute())}>
+                  Rotayi Temizle
+                </button>
+              )}
             </div>
           </Popup>
         </Marker>
       ))}
+
+      {route && <Polyline positions={route} />}
     </MapContainer>
   );
 };

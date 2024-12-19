@@ -6,6 +6,8 @@ import Gallery from "./Gallery";
 import Airport from "./Airport";
 import Time from "./Time";
 import Aircraft from "./Aircraft";
+import Loader from "../Loader";
+import Error from "../Error";
 
 const Modal = ({ id, close }) => {
   const { isLoading, error, info } = useSelector((store) => store.detail);
@@ -16,21 +18,23 @@ const Modal = ({ id, close }) => {
   return (
     <div className="modal-outer">
       <div className="modal-inner">
-        {isLoading
-          ? "Loader"
-          : error
-          ? "Error"
-          : info && (
-              <div className="info-wrapper">
-                <Head info={info} close={close} />
-                <div className="details">
-                  <Gallery data={info.aircraft.images} />
-                  <Airport data={info.airport} />
-                  <Time data={info.time} />
-                  <Aircraft data={info.aircraft} />
-                </div>
+        <Head info={info} close={close} />
+        {isLoading ? (
+          <Loader />
+        ) : error ? (
+          <Error info={Error} />
+        ) : (
+          info && (
+            <div className="info-wrapper">
+              <div className="details">
+                <Gallery data={info.aircraft.images} />
+                <Airport data={info.airport} />
+                <Time data={info.time} />
+                <Aircraft data={info.aircraft} />
               </div>
-            )}
+            </div>
+          )
+        )}
       </div>
     </div>
   );

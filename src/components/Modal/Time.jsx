@@ -5,12 +5,12 @@ const Time = ({ data }) => {
   return (
     <div className="time">
       <div>
-        <span>SCHEDULED</span>
+        <span>SCHEDULE</span>
         <span>{c(t(data.scheduled?.departure))}</span>
       </div>
 
       <div>
-        <span>SCHEDULED</span>
+        <span>SCHEDULE</span>
         <span>{c(t(data.scheduled?.arrival))}</span>
       </div>
 

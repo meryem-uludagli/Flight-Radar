@@ -1,20 +1,29 @@
 import { IoMdAirplane } from "react-icons/io";
+import c from "../../utils/nullCheck";
 
-const Aircraft = () => {
+const Aircraft = ({ data }) => {
   return (
     <div className="aircraft">
-      <div>
+      <div className="icon">
         <IoMdAirplane />
       </div>
 
       <div>
-        <p></p>
+        <p>
+          <span className="title">Flight Type</span>
+          <span>{c(data?.model?.text)}</span>
+        </p>
 
         <div>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
+          <p>
+            <span className="title">TAIL CODE</span>
+            <span>{c(data?.registration)}</span>
+          </p>
+
+          <p>
+            <span className="title">Country Id</span>
+            <span>{c(data?.countryId)}</span>
+          </p>
         </div>
       </div>
     </div>

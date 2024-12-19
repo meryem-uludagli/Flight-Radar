@@ -2,15 +2,20 @@ import { createSlice } from "@reduxjs/toolkit";
 import { getDetails } from "../actions";
 
 const initialState = {
+  info: null,
   isLoading: false,
   error: null,
-  info: null,
   route: [],
 };
+
 const detailSlice = createSlice({
   name: "detail",
   initialState,
-  reducers: {},
+  reducers: {
+    clearRoute: (state) => {
+      state.route = [];
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(getDetails.pending, (state) => {
       state.isLoading = true;
@@ -27,4 +32,6 @@ const detailSlice = createSlice({
     });
   },
 });
+
 export default detailSlice.reducer;
+export const { clearRoute } = detailSlice.actions;
