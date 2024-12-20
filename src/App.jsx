@@ -21,7 +21,7 @@ const App = () => {
       <Routes>
         const [detailId, setDetailId] = useState(null);
         <Route path="/" element={<Map setDetailId={setDetailId} />} />
-        <Route path="/list" element={<List />} />
+        <Route path="/list" element={<List setDetailId={setDetailId} />} />
       </Routes>
 
       {detailId && <Modal id={detailId} close={() => setDetailId(null)} />}
